@@ -33,4 +33,4 @@ jobs:
       - name: Run a multi-line script
         run: |
           git clone https://github.com/Yandex-Practicum/web-autotest-public.git,
-          make proj13-test-config.
+          cd web-autotest-public, ls.
