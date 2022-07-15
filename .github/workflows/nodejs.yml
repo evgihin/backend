@@ -4,21 +4,18 @@ on: workflow_dispatch
 
 
 jobs:
-  build:
-
+  Autotest:
+    name: Autotests
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout
       - uses: actions/checkout@v3
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '14.6'
-      - name: Clone git
       - run: git clone https://github.com/Yandex-Practicum/web-autotest-public.git
-      - name: Config
       - run: web-autotest-public/proj13/bin/test-config.sh 
-      - name: Prepare-endpoints
-      - run:  web-autotest-public/proj13/bin/prepare-test-endpoints.sh  
-      - name: Endpoints
-      - run:  web-autotest-public/proj13/bin/test-endpoints.sh  
+      - run: web-autotest-public/proj13/bin/prepare-test-endpoints.sh  
+      
