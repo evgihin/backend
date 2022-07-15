@@ -1,8 +1,8 @@
 name: Node.js CI
-
-on: workflow_dispatch
-
-
+on: 
+  push:
+    branches:
+      - main
 jobs:
   Autotest:
     name: Autotests
@@ -10,12 +10,16 @@ jobs:
 
     steps:
       - name: Checkout
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '14.6'
-      - run: git clone https://github.com/Yandex-Practicum/web-autotest-public.git
-      - run: web-autotest-public/proj13/bin/test-config.sh 
-      - run: web-autotest-public/proj13/bin/prepare-test-endpoints.sh  
-      
+      - name: Git clone
+        run: git clone https://github.com/Yandex-Practicum/web-autotest-public.git
+      - name: Config
+        run: web-autotest-public/proj13/bin/test-config.sh 
+      - name: Prepare endpoints
+        run: web-autotest-public/proj13/bin/prepare-test-endpoints.sh  
+      - name: Endpoints
+        run:  web-autotest-public/proj13/bin/test-endpoints.sh 
