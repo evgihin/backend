@@ -1,6 +1,7 @@
 name: Node.js CI
 
-on: [workflow_dispatch]
+on: workflow_dispatch
+
 
 jobs:
   build:
@@ -13,5 +14,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '14.6'
+      - name: Clone git
       - run: git clone https://github.com/Yandex-Practicum/web-autotest-public.git
-      - run: make -f web-autotest-public/Makefile
+      - name: Config
+      - run: web-autotest-public/proj13/bin/test-config.sh 
+      - name: Prepare-endpoints
+      - run:  web-autotest-public/proj13/bin/prepare-test-endpoints.sh  
+      - name: Endpoints
+      - run:  web-autotest-public/proj13/bin/test-endpoints.sh  
