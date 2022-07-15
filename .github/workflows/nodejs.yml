@@ -14,4 +14,4 @@ jobs:
         with:
           node-version: '14.6'
       - run: git clone https://github.com/Yandex-Practicum/web-autotest-public.git
-      - run: bash web-autotest-public/proj13/bin/test-config.sh 
+      - run: make -f web-autotest-public/Makefile
